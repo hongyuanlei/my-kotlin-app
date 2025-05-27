@@ -1,0 +1,13 @@
+name: CI
+
+on:
+  push:
+    paths:
+      - app/**
+
+jobs:
+  build-app:
+    uses: hongyuanlei/gh-workflow-java-maven/.github/workflows/java-maven-build.yml@master
+    secrets: inherit
+    with:
+      working-directory: app
