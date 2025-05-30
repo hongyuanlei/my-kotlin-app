@@ -18,4 +18,6 @@ jobs:
     needs:
       - build-app
     uses: hongyuanlei/gh-workflow-java-release/.github/workflows/java-release.yml@master
+    with:
+      dockerhub-repo: ishuiyutain/my-kotlin-app
     secrets: inherit
