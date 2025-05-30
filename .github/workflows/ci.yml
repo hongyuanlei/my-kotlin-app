@@ -7,6 +7,9 @@ on:
       - app/**
       - k8s/**
 
+permissions:
+  contents: write
+  
 # Test the workflow 12
 jobs:
 #  build-app:
