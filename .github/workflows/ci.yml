@@ -12,21 +12,23 @@ permissions:
 
 # Test the workflow 13
 jobs:
-#  build-app:
-#    uses: hongyuanlei/gh-workflow-java-maven/.github/workflows/java-maven-build.yml@master
-#    secrets: inherit
-#    with:
-#      working-directory: app
-#
-#  release-app:
-#    needs:
-#      - build-app
-#    uses: hongyuanlei/gh-workflow-java-release/.github/workflows/java-release.yml@master
-#    with:
-#      dockerhub-repo: ishuiyutian/my-kotlin-app
-#    secrets: inherit
+  build-app:
+    uses: hongyuanlei/gh-workflow-java-maven/.github/workflows/java-maven-build.yml@master
+    secrets: inherit
+    with:
+      working-directory: app
+
+  release-app:
+    needs:
+      - build-app
+    uses: hongyuanlei/gh-workflow-java-release/.github/workflows/java-release.yml@master
+    with:
+      dockerhub-repo: ishuiyutian/my-kotlin-app
+    secrets: inherit
 
   release-k8s-dev:
+    needs:
+      - release-app
     uses: hongyuanlei/gh-workflow-k8s-release/.github/workflows/k8s-release.yml@master
     secrets: inherit
     with:
