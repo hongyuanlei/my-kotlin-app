@@ -27,4 +27,4 @@ jobs:
     uses: hongyuanlei/gh-workflow-k8s-release/.github/workflows/k8s-release.yml@master
     with:
       working-directory: k8s
-      env: dev
+      environment: dev
