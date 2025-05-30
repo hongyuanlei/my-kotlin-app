@@ -6,7 +6,7 @@ on:
       - .github/workflows/ci.yml
       - app/**
 
-# Test the workflow 9
+# Test the workflow 10
 jobs:
   build-app:
     uses: hongyuanlei/gh-workflow-java-maven/.github/workflows/java-maven-build.yml@master
