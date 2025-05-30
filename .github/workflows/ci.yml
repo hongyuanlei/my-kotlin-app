@@ -18,3 +18,4 @@ jobs:
     needs:
       - build-app
     uses: hongyuanlei/gh-workflow-java-release/.github/workflows/java-release.yml@master
+    secrets: inherit
