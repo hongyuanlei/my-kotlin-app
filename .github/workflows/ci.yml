@@ -9,7 +9,7 @@ on:
 
 permissions:
   contents: write
-  
+
 # Test the workflow 12
 jobs:
 #  build-app:
