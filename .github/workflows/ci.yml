@@ -6,8 +6,13 @@ on:
       - app/**
 
 jobs:
-  build-app:
-    uses: hongyuanlei/gh-workflow-java-maven/.github/workflows/java-maven-build.yml@master
-    secrets: inherit
-    with:
-      working-directory: app
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Hello World"
+#jobs:
+#  build-app:
+#    uses: hongyuanlei/gh-workflow-java-maven/.github/workflows/java-maven-build.yml@master
+#    secrets: inherit
+#    with:
+#      working-directory: app
