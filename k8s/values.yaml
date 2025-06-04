@@ -1,3 +1,2 @@
-namespace: demo
 appName: my-kotlin-app
 imageName: ishuiyutian/my-kotlin-app
