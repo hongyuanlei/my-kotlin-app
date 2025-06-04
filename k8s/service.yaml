@@ -1,0 +1,16 @@
+---
+# Source: my-kotlin-app/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-kotlin-app
+  namespace: demo-dev
+  labels:
+    app: my-kotlin-app
+spec:
+  selector:
+    app: my-kotlin-app
+  ports:
+    - port: 8080
+      targetPort: 8080
+  type: ClusterIP
