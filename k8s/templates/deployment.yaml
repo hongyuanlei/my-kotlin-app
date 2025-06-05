@@ -16,7 +16,7 @@ spec:
       containers:
         - name: {{ .Values.appName }}
           image: {{ .Values.imageName }}:{{.Values.buildNumber }}
-          imagePullPolicy: Never
+          imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
           env:
