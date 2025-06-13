@@ -1,0 +1,26 @@
+---
+# Source: my-kotlin-app/templates/alerts.yaml
+apiVersion: monitoring.cores.com/v1
+kind: PrometheusRule
+metadata:
+  namespace: applications
+  name: my-kotlin-app-monitoring-and-alerting-jvm-alerts-rules
+  labels:
+    prometheus: k8s
+    role: alert-rules
+    app: my-kotlin-app-monitoring-and-alerting
+    team: team1
+spec:
+  groups:
+    - name: my-kotlin-app-jvm-alerts.alerts
+      rules:
+        - alert: MyKotlinAppJVMUsageHigh
+          annotations:
+            description: JVM usage high
+            summary: JVM usage high
+          labels:
+            team: team1
+            severity: critical
+            env: dev
+          expr: (sum by(instance) (jvm_memory_used_bytes{job="my-kotlin-app"}) / sum by(instance) (jvm_memory_limit_bytes{job="my-kotlin-app"}) * 100 > 80)
+          for: 5m
