@@ -1,0 +1,13 @@
+groups:
+  - name: my-kotlin-app-jvm-alerts.alerts
+    rules:
+      - alert: MyKotlinAppJVMUsageHigh
+        annotations:
+          description: JVM usage high
+          summary: JVM usage high
+        labels:
+          team: {{ .Values.team }}
+          severity: critical
+          env: {{ .Values.env }}
+        expr: (sum by(instance) (jvm_memory_used_bytes{job="my-kotlin-app"}) / sum by(instance) (jvm_memory_limit_bytes{job="my-kotlin-app"}) * 100 > 80)
+        for: 5m

@@ -1,0 +1,21 @@
+{{- $namespace := .Values.namespace }}
+{{- $app := .Values.alert_deployment_name }}
+{{- $team := .Values.team }}
+{{- $root := .}}
+{{- range $path, $bytes := .Files.Glob "alerts/**.yaml" }}
+{{- $file :=$path | base | split "." }}
+{{- $ruleType := index $file "_0" }}
+---
+apiVersion: monitoring.cores.com/v1
+kind: PrometheusRule
+metadata:
+  namespace: {{ $namespace }}
+  name: {{ $app }}-{{ $ruleType }}-rules
+  labels:
+    prometheus: k8s
+    role: alert-rules
+    app: {{ $app }}
+    team: {{ $team }}
+spec:
+{{ tpl ($root.Files.Get $path) $ | indent 2 }}
+{{- end}}
