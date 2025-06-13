@@ -1,0 +1,19 @@
+{{- $namespace := .Values.namespace }}
+{{- $app := .Values.alert_deployment_name }}
+{{- $team := .Values.team }}
+{{- $root := .}}
+{{- range $path, $bytes := .Files.Glob "dashboards/**.json" }}
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  namespace: {{ $namespace }}
+  name: {{ $path | base }}
+  labels:
+    grafana_dashboard: "true"
+    app: {{ $app }}
+    team: {{ $team }}
+data:
+  {{ $path | base }}: |-
+{{ $root.Files.Get $path | indent 4 }}
+{{- end}}

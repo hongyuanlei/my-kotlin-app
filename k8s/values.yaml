@@ -1,3 +1,5 @@
 appName: my-kotlin-app
 imageName: ishuiyutian/my-kotlin-app
 namespace: applications
+alert_deployment_name: my-kotlin-app-monitoring-and-alerting
+team: team1
