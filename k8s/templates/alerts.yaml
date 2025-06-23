@@ -6,7 +6,7 @@
 {{- $file :=$path | base | split "." }}
 {{- $ruleType := index $file "_0" }}
 ---
-apiVersion: monitoring.cores.com/v1
+apiVersion: monitoring.coreos.com/v1
 kind: PrometheusRule
 metadata:
   namespace: {{ $namespace }}
