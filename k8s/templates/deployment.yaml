@@ -21,4 +21,4 @@ spec:
             - containerPort: 8080
           env:
             - name: OTEL_EXPORTER_OTLP_ENDPOINT
-              value: http://otel.observability.svc.cluster.local:4318
+              value: http://otel-collector-collector.observability:4318
